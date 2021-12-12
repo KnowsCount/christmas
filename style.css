@@ -1,0 +1,126 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	height: 100vh;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #161616;
+	color: #c5a880;
+	font-family: sans-serif;
+}
+
+label {
+	display: inline-block;
+	background-color: #161616;
+	padding: 16px;
+	border-radius: 0.3rem;
+	cursor: pointer;
+	margin-top: 1rem;
+	width: 300px;
+	border-radius: 10px;
+	border: 1px solid #c5a880;
+	text-align: center;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.btn {
+	background-color: #161616;
+	border-radius: 10px;
+	color: #c5a880;
+	border: 1px solid #c5a880;
+	padding: 16px;
+	width: 300px;
+	margin-bottom: 16px;
+	line-height: 1.5;
+	cursor: pointer;
+}
+
+.btn-special {
+	background-color: #c5a880;
+	border-radius: 10px;
+	/* color: #c5a880; */
+	color: #161616;
+	border: 1px solid #c5a880;
+	/* border: 1px solid #c5a880; */
+	padding: 16px;
+	width: 300px;
+	margin-bottom: 16px;
+	line-height: 1.5;
+	cursor: pointer;
+	text-shadow: 0 0 0.1em, 0 0 0.3em;
+	appearance: none;
+	outline: none;
+	overflow: hidden;
+	position: relative;
+}
+
+.btn-special span {
+	position: relative;
+}
+
+.btn-special::before {
+	--size: 0;
+	content: '';
+	position: absolute;
+	left: var(--x);
+	top: var(--y);
+	width: var(--size);
+	height: var(--size);
+	background: radial-gradient(circle closest-side, #2d2d30, transparent);
+	transform: translate(-50%, -50%);
+	transition: width 0.2s ease, height 0.2s ease;
+}
+
+.btn-special:hover::before {
+	--size: 400px;
+}
+
+.separator {
+	font-weight: bold;
+	text-align: center;
+	width: 300px;
+	margin: 16px 0px;
+	color: #a07676;
+}
+
+.title {
+	text-align: center;
+	background: linear-gradient(
+		45deg,
+		rgb(197, 168, 128) 0%,
+		rgba(197, 118, 118, 0.582) 100%
+	);
+	/* color: #a07676; */
+	color: transparent;
+	font-weight: bold;
+	font-size: 1.25rem;
+	margin-bottom: 16px;
+	-webkit-background-clip: text;
+}
+
+.text-clip {
+	color: transparent;
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+	background: linear-gradient(
+		45deg,
+		rgb(160, 118, 118) 0%,
+		rgba(113, 52, 131, 0.582) 100%
+	);
+	-webkit-background-clip: text;
+}
+
+.text-loading {
+	font-size: 2rem;
+}
