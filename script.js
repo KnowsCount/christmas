@@ -53,6 +53,9 @@ buttons.forEach((button, index) =>
 	button.addEventListener('click', () => loadAudio(index))
 )
 
+const startButton = document.getElementById('startButton')
+startButton.addEventListener('click', init)
+
 function init() {
 	const overlay = document.getElementById('overlay')
 	overlay.remove()
@@ -161,6 +164,7 @@ function loadAudio(i) {
 
 	const loader = new THREE.AudioLoader()
 	loader.load(file, function (buffer) {
+		innerHTML = '		<button id="startButton">Play</button>'
 		audio.setBuffer(buffer)
 		audio.play()
 		analyser = new THREE.AudioAnalyser(audio, fftSize)
@@ -187,6 +191,14 @@ function uploadAudio(event) {
 
 	reader.readAsArrayBuffer(files[0])
 }
+
+// function playAudio() {
+// 	if (audio.isPlaying) {
+// 		audio.pause()
+// 	} else {
+// 		audio.play()
+// 	}
+// }
 
 function addTree(scene, uniforms, totalPoints, treePosition) {
 	const vertexShader = `

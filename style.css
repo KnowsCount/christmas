@@ -85,6 +85,10 @@ ul {
 	--size: 400px;
 }
 
+.start-button {
+	z-index: 1000;
+}
+
 .separator {
 	font-weight: bold;
 	text-align: center;
