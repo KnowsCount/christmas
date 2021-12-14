@@ -86,7 +86,14 @@ ul {
 }
 
 .start-button {
-	z-index: 1000;
+	/* z-index: 1000; */
+	font-size: 1rem;
+	padding: 16px;
+	background-color: #161616;
+	border-radius: 10px;
+	color: #c5a880;
+	border: 1px solid #c5a880;
+	cursor: pointer;
 }
 
 .separator {
