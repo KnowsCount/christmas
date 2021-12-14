@@ -56,7 +56,8 @@ buttons.forEach((button, index) =>
 function loadAudio(i) {
 	document.getElementById('overlay').innerHTML =
 		// '<div class="text-loading">等等音乐……</div>'
-		'<button id="startButton" class="start-button">Play</button>'
+		// this already removes the overlay part.
+		'<button id="startButton" class="start-button">下载</button>'
 	const files = [
 		'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Simon_Panrucker/Happy_Christmas_You_Guys/Simon_Panrucker_-_01_-_Snowflakes_Falling_Down.mp3',
 		'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Dott/This_Christmas/Dott_-_01_-_This_Christmas.mp3',
@@ -67,13 +68,22 @@ function loadAudio(i) {
 
 	const loader = new THREE.AudioLoader()
 	loader.load(file, function (buffer) {
-		// innerHTML = '<button id="startButton">Play</button>'
 		audio.setBuffer(buffer)
 		audio.play()
 		analyser = new THREE.AudioAnalyser(audio, fftSize)
 		// init()
 		const startButton = document.getElementById('startButton')
-		startButton.addEventListener('click', init)
+		startButton.addEventListener('click', function() {
+			document.getElementById('overlay').innerHTML =
+				'<button id="startButton" class="start-button">播放</button>'
+			const startButton = document.getElementById('startButton')
+			startButton.remove()
+			console.log('start button removed')
+			// const overlay = document.getElementById('overlay')
+			// overlay.remove()
+			// console.log('overlay removed')
+			init()
+		})
 	})
 }
 
@@ -98,10 +108,10 @@ function uploadAudio(event) {
 }
 
 function init() {
-	const overlay = document.getElementById('overlay')
-	const startButton = document.getElementById('startButton')
-	startButton.remove()
-	overlay.remove()
+	// const overlay = document.getElementById('overlay')
+	// const startButton = document.getElementById('startButton')
+	// overlay.remove()
+	// startButton.remove()
 
 	scene = new THREE.Scene()
 	renderer = new THREE.WebGLRenderer({ antialias: true })
