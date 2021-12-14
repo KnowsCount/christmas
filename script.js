@@ -57,31 +57,27 @@ function loadAudio(i) {
 	document.getElementById('overlay').innerHTML =
 		// '<div class="text-loading">等等音乐……</div>'
 		// this already removes the overlay part.
-		'<button id="startButton" class="start-button">下载</button>'
+		'<button id="startButton" class="start-button">播放</button>'
 	const files = [
+		// './music/test.mp3', (file for local debugging)
 		'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Simon_Panrucker/Happy_Christmas_You_Guys/Simon_Panrucker_-_01_-_Snowflakes_Falling_Down.mp3',
 		'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Dott/This_Christmas/Dott_-_01_-_This_Christmas.mp3',
 		'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/TRG_Banks/TRG_Banks_Christmas_Album/TRG_Banks_-_12_-_No_room_at_the_inn.mp3',
 		'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Mark_Smeby/En_attendant_Nol/Mark_Smeby_-_07_-_Jingle_Bell_Swing.mp3',
+		// './music/netease.mp3',
 	]
 	const file = files[i]
 
 	const loader = new THREE.AudioLoader()
 	loader.load(file, function (buffer) {
-		audio.setBuffer(buffer)
-		audio.play()
-		analyser = new THREE.AudioAnalyser(audio, fftSize)
-		// init()
 		const startButton = document.getElementById('startButton')
-		startButton.addEventListener('click', function() {
-			document.getElementById('overlay').innerHTML =
-				'<button id="startButton" class="start-button">播放</button>'
+		startButton.addEventListener('click', function () {
+			audio.setBuffer(buffer)
+			audio.play()
+			analyser = new THREE.AudioAnalyser(audio, fftSize)
 			const startButton = document.getElementById('startButton')
 			startButton.remove()
 			console.log('start button removed')
-			// const overlay = document.getElementById('overlay')
-			// overlay.remove()
-			// console.log('overlay removed')
 			init()
 		})
 	})
@@ -108,11 +104,6 @@ function uploadAudio(event) {
 }
 
 function init() {
-	// const overlay = document.getElementById('overlay')
-	// const startButton = document.getElementById('startButton')
-	// overlay.remove()
-	// startButton.remove()
-
 	scene = new THREE.Scene()
 	renderer = new THREE.WebGLRenderer({ antialias: true })
 	renderer.setPixelRatio(window.devicePixelRatio)
